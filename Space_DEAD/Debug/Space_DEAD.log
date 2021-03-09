@@ -1,4 +1,4 @@
 ﻿  Space_DEAD.cpp
 D:\Projects\Space_DEAD\Space_DEAD\Space_DEAD.cpp(12,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Projects\Space_DEAD\Space_DEAD\Space_DEAD.cpp(53,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Projects\Space_DEAD\Space_DEAD\Space_DEAD.cpp(69,21): warning C4018: <: несоответствие типов со знаком и без знака
   Space_DEAD.vcxproj -> D:\Projects\Space_DEAD\Debug\Space_DEAD.exe

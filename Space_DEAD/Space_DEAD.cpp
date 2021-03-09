@@ -6,30 +6,38 @@
 #include <string.h>
 using namespace std;
 
-string DeleteSpace(string x)
+string DeleteSpace(string value)
 {
-	string z;
-	for (int i = 0; i < x.length(); i++)
+	string result;
+	for (int i = 0; i < value.length(); i++)
 	{
-		if (x[i] == ' ' && x[i + 1] == ' ')//Условие(если встречается несколько пробелов подряд)
+		if (value[i] == ' ' && value[i + 1] == ' ')//Условие(если встречается несколько пробелов подряд)
 		{
 			continue;//пропускаем итерацию
 		}
 		else//иначе
 		{
-			z += x[i];
+			result += value[i];
 		}
 	}
-	return z;
+	return result;
 }
 
 int main()
 {
-	string text; // Строка, куда будет записан текст
+	setlocale(LC_ALL, "ru");
+
+	string text, path; // Строка, куда будет записан текст
 	vector <string> arr;
 	vector <string> arr2;
 
-	ifstream read("C:\\Users\\Kiril\\OneDrive\\Рабочий стол\\File_2.txt");  // Поток для чтения. В скобках записывается путь к файлу
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+
+	cout << "Укажите путь к файлу: ";
+	getline(cin, path);
+
+	ifstream read(path);  // Поток для чтения. В скобках записывается путь к файлу
 
 	if (read.is_open()) // Проверяет, открылся ли файл.
 	{
@@ -40,14 +48,22 @@ int main()
 		}
 		read.close();
 	}
+	else
+	{
+		cout << "Не удалось открыть файл!" << endl;
+	}
 
 	for (auto& var : arr)
 	{
 		arr2.push_back(DeleteSpace(var));
 	}
 
+	path.clear();
+	cout << "Укажите путь сохранения отредактированного файла: ";
+	getline(cin, path);
+
 	ofstream write;// открывем поток для записи
-	write.open("D:\\Projects\\Space_DEAD\\Debug\\result2.txt");//Указываем путь к новому файлу
+	write.open(path);//Указываем путь к новому файлу
 	if (write.is_open())
 	{
 		for (int i = 0; i < arr2.size(); i++)
@@ -56,6 +72,12 @@ int main()
 		}
 	}
 	write.close();
+
+	SetConsoleOutputCP(866);
+	SetConsoleCP(866);
+
+	cout << "Повторяющиеся пробелы в тексте удалены: ";
+
 	system("pause");
 	return 0;
 }
